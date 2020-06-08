@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 02 2020 г., 17:20
+-- Время создания: Июн 08 2020 г., 11:25
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.1.32
 
@@ -64,7 +64,6 @@ INSERT INTO `news` (`id`, `img`, `h`, `p`) VALUES
 (6, 'images/redhook.png', 'Новинка! Крючок «ДОЖДЕВЫЕ ЧЕРВИ»', ' На такой крючок отлично ловится речная рыба \r\n(плотва, карась, а также крупная рыба - сазан, лещ). \r\nДля рыболовов это стандартная наживка \r\nи практически универсальная, т.к. даже некоторые \r\nпредставители хищной рыбы клюют на нее.'),
 (13, 'images/redhook.png', 'гавно', ' g'),
 (14, 'greenhook.png', 'dewd', ' eds'),
-(15, 'C:/Users/bulyc/Downloads/OSPanel/domains/localhost/mysite2/images/greenhook.png', 'wegferg', ' d'),
 (16, 'images/greenhook.png', '', ' ');
 
 -- --------------------------------------------------------
@@ -108,6 +107,29 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id_prod`, `name_tov`, `price`) VALUES
 (1, 'Апельсины', 100),
 (2, 'Яблоки', 200);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `telep`
+--
+
+CREATE TABLE `telep` (
+  `id` int(11) NOT NULL,
+  `mark` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `telep`
+--
+
+INSERT INTO `telep` (`id`, `mark`, `price`) VALUES
+(1, 'Samsung', '25000'),
+(2, 'Iphone', '100000'),
+(5, 'Honor', '2500'),
+(6, 'Xiaomi', '42500'),
+(15, 'Samsung', NULL);
 
 -- --------------------------------------------------------
 
@@ -163,6 +185,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id_prod`);
 
 --
+-- Индексы таблицы `telep`
+--
+ALTER TABLE `telep`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -195,6 +223,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   MODIFY `id_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `telep`
+--
+ALTER TABLE `telep`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

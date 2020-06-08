@@ -1,9 +1,9 @@
 <? 
-require($_SERVER["DOCUMENT_ROOT"]."/ekz/models/reg.php");
-require($_SERVER["DOCUMENT_ROOT"]."/ekz/models/DB.php");
-require($_SERVER["DOCUMENT_ROOT"]."/ekz/controllers/orders.php");
-$orderList1 = orders::getOrdersClients();
-$orderList2 = orders::getOrdersProducts();
+require($_SERVER["DOCUMENT_ROOT"]."/ekz2/models/reg.php");
+require($_SERVER["DOCUMENT_ROOT"]."/ekz2/models/DB.php");
+require($_SERVER["DOCUMENT_ROOT"]."/ekz2/controllers/products.php");
+$orderList1 = products::getAveragePrice();
+$orderList2 = products::delNullPrice();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,18 +12,15 @@ $orderList2 = orders::getOrdersProducts();
 </head>
 <body>
 <table>
-<tr> <td> id Клиента </td> <td>Имя клиента </td> <td> Количество заказов</td> </tr>
-<?php foreach($orderList1 as $arNews): ?>
-<tr> <td><?= $arNews["id_us"] ?>  </td> <td> <?= $arNews["name_cl"] ?></td> <td> <?= $arNews["sum(id_us)"] ?></td> </tr>
+<tr> <td> id товара </td> <td>Наименование </td> <td> Цена</td> </tr>
+<?php foreach($orderList1 as $arProd): ?>
+<tr> <td><?= $arProd["id"] ?>  </td> <td> <?= $arProd["mark"] ?></td> <td> <?= $arProd["price"] ?></td> </tr>
 <?php endforeach; ?>
 </table>
 <br>
 
-<table>	
-<tr> <td> id Товара </td> <td>Наименование товара </td> <td> Количество заказов</td> </tr>
-<?php foreach($orderList2 as $arNew2): ?>
-<tr> <td><?= $arNew2["id_tov"] ?>  </td> <td> <?= $arNew2["name_tov"] ?></td> <td> <?= $arNew2["sum(id_tov)"] ?></td> </tr>
-<?php endforeach; ?>
-</table>
+<form method="post" action="">
+<input type="submit" value="Удалить" class="buttons" name="msubmit">
+</form>
 </body>
 </html>
